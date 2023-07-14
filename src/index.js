@@ -5,6 +5,7 @@ const conn = require("express-myconnection");
 const app = express();
 const route = require("./routers/index");
 const port = process.env.PORT || 5001;
+const cors = require('cors');
 const dbConfig = {
     host: process.env.DB_HOST || "localhost",
     port: process.env.DB_PORT || "3307",
@@ -12,7 +13,7 @@ const dbConfig = {
     password: process.env.DB_PASSWORD || "",
     database: process.env.DB_NAME || "users"
 };
-
+app.use(cors()); //control de acceso paginas
 app.use(conn(mysql, dbConfig, "single"));
 app.use(express.json());
 app.use("/", route);
