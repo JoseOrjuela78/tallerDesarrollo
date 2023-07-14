@@ -6,11 +6,11 @@ const app = express();
 const route = require("./routers/index");
 const port = process.env.PORT || 5001;
 const dbConfig = {
-    host: "localhost",
-    port: "3307",
-    user: "root",
-    password: "",
-    database: "users"
+    host: process.env.DB_HOST || "localhost",
+    port: process.env.DB_PORT || "3307",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME || "users"
 };
 
 app.use(conn(mysql, dbConfig, "single"));
