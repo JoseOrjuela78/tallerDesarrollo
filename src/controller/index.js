@@ -2,7 +2,7 @@ exports.create = (req, res) => {
     req.getConnection((err, conn) => {
         if (err) return res.send(err);
 
-        conn.query(`INSERT INTO usuarios SET ? `, [req.body], (err, result) => {
+        conn.query(`INSERT INTO usuarios SET ?`, [req.body], (err, result) => {
 
             if (err) return res.send(err);
             res.send("Usuario creado exitosamente");

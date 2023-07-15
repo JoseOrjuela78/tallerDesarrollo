@@ -13,9 +13,12 @@ const dbConfig = {
     password: process.env.DB_PASSWORD || "",
     database: process.env.DB_NAME || "users"
 };
-app.use(cors()); //control de acceso paginas
+
 app.use(conn(mysql, dbConfig, "single"));
+app.use(cors()); //control de acceso paginas
 app.use(express.json());
+app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 app.use("/", route);
 
 
